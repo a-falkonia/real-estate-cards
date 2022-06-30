@@ -1,0 +1,360 @@
+.sidebar {
+  min-width: 200px;
+  width: 270px;
+
+  @media (max-width: 829px) {
+    margin-left: 0 !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    bottom: 0;
+
+    padding: 15px;
+    box-shadow: 0px 0px 20px 4px rgba(120, 116, 116, 0.35);
+    overflow-y: scroll;
+    transform: translateX(-150%);
+    transition: transform 0.3s ease-in;
+  }
+
+  &--mobile-active {
+    transform: translateX(-0%);
+  }
+}
+
+.widget {
+  position: relative;
+
+  &__body--hidden {
+    display: none;
+  }
+
+  &--top-30 {
+    margin-top: 30px !important;
+  }
+  &__hidden {
+    display: none;
+  }
+  & + & {
+    margin-top: 33px;
+  }
+
+  &__title {
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 1.16;
+    color: $primary;
+
+    &::after {
+      content: '';
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      vertical-align: middle;
+      background-image: url('../../img/icons/chevron.svg');
+      background-repeat: no-repeat;
+      background-size: initial;
+      background-position: center;
+    }
+  }
+  &__title--active::after {
+    transform: rotate(180deg);
+  }
+
+  &__btn-show-hidden {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    font-family: inherit;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 1.19;
+    color: #4290c9;
+    cursor: pointer;
+    transition: color 0.2s ease-in;
+  }
+
+  &__btn-show-hidden:active,
+  &__btn-show-hidden:focus {
+    outline: none;
+  }
+
+  &__btn-show-hidden:hover {
+    color: #007fda;
+    text-decoration: underline;
+  }
+}
+.location {
+  &__row {
+    display: flex;
+
+    &:first-child {
+      overflow: hidden;
+      border-radius: 4px 4px 0 0;
+      border: 1px solid $secondary-light;
+    }
+
+    &:last-child {
+      overflow: hidden;
+      border-radius: 0 0 4px 4px;
+      border: 1px solid $secondary-light;
+      border-top: none;
+    }
+  }
+
+  &__btn {
+    flex-grow: 1;
+
+    font-family: inherit;
+    height: 48px;
+    padding: 0 15px;
+
+    background-color: transparent;
+    border: none;
+
+    text-align: center;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 50px;
+    color: #3c3c3c;
+
+    cursor: pointer;
+    transition: background-color 0.2s ease-in;
+
+    &:hover {
+      background-color: #fff0bb;
+    }
+
+    @media (max-width: $breakpoint-xl) {
+      padding: 0 5px;
+    }
+  }
+
+  &__checkbox {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    opacity: 0;
+    appearance: none;
+  }
+
+  &__checkbox:checked + &__btn {
+    background-color: $accent;
+  }
+  &__checkbox:checked + &__btn:hover {
+    background-color: darken($accent, 10%);
+  }
+}
+
+.radio {
+  display: block;
+  cursor: pointer;
+
+  & + & {
+    margin-top: 15px;
+  }
+  &__real {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    opacity: 0;
+    appearance: none;
+  }
+
+  &__fake {
+    position: relative;
+    display: inline-block;
+    margin-right: 7px;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: 1px solid $secondary;
+    border-radius: 50%;
+    vertical-align: bottom;
+  }
+
+  &__real:checked + &__fake {
+    background-color: #ffe074;
+  }
+  &__real:checked + &__fake::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    content: '';
+    border-radius: 50%;
+    width: 6px;
+    height: 6px;
+    background: #3c3c3c;
+    transform: translate(-50%, -50%);
+  }
+
+  &__real:checked ~ &__title {
+    font-weight: 500;
+  }
+
+  &__title {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.18;
+    color: #000000;
+  }
+}
+
+.checkbox {
+  display: block;
+  cursor: pointer;
+
+  & + & {
+    margin-top: 15px;
+  }
+
+  &--hidden {
+    display: none;
+  }
+  &__real {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    opacity: 0;
+    appearance: none;
+  }
+
+  &__fake {
+    position: relative;
+    display: inline-block;
+    margin-right: 7px;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: 1px solid $secondary;
+    border-radius: 2px;
+    vertical-align: bottom;
+  }
+
+  &__title {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.18;
+    color: #000000;
+  }
+  &__real:checked + &__fake {
+    background-color: #ffe074;
+  }
+  &__real:checked + &__fake::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    content: '';
+    width: 18px;
+    height: 18px;
+    background-image: url('../../img/icons/check.svg');
+    background-size: initial;
+    background-position: center;
+    transform: translate(-50%, -50%);
+  }
+
+  &__real:checked ~ &__title {
+    font-weight: 500;
+  }
+}
+
+.toggle {
+  cursor: pointer;
+
+  &__real {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    opacity: 0;
+    appearance: none;
+  }
+
+  &__fake {
+    position: relative;
+    display: inline-block;
+    margin-right: 7px;
+    width: 37px;
+    height: 20px;
+    background: #c4c4c4;
+    border-radius: 10px;
+    vertical-align: bottom;
+  }
+
+  &__fake:before {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    content: '';
+    width: 16px;
+    height: 16px;
+    background: #3c3c3c;
+    border-radius: 50%;
+    transition: all 0.2s ease-in;
+  }
+
+  &__real:checked + &__fake {
+    background: $accent;
+  }
+  &__real:checked + &__fake::before {
+    left: 19px;
+  }
+
+  &__title {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.18;
+    color: #000000;
+  }
+
+  &__real:checked ~ &__title {
+    font-weight: 500;
+  }
+}
+
+.form-btn {
+  & + & {
+    margin-top: 10px;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 50px;
+
+  border: 1px solid $secondary-light;
+
+  border-radius: 4px;
+  background-color: transparent;
+
+  font-family: inherit;
+  text-align: center;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 1;
+  color: #3c3c3c;
+
+  cursor: pointer;
+  transition: background-color 0.2s ease-in;
+
+  img {
+    margin-right: 6px;
+  }
+
+  &--submit {
+    background: $accent;
+    border: none;
+    color: #000;
+  }
+  &--submit:hover {
+    background: #ffe173;
+  }
+}

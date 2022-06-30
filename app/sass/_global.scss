@@ -1,0 +1,110 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background-color: $background;
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 60px 0px;
+  max-width: ($containerWidth) + px;
+
+  @media (max-width: $breakpoint-xl) {
+    max-width: 830px;
+  }
+
+  @media (max-width: $breakpoint-lg) {
+    max-width: 600px;
+  }
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-holder + .sidebar {
+  margin-left: 30px;
+}
+
+.toggle-sidebar {
+  display: none;
+  position: fixed;
+  z-index: 9;
+  right: 15px;
+  top: 8px;
+  width: 45px;
+  height: 45px;
+  background-color: rgb(71, 71, 71);
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width:829px){
+    display: flex;
+  }
+}
+
+.menu-icon-wrapper {
+	width: 30px;
+	height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0;
+	border: none;
+	background-color: transparent;
+}
+
+.menu-icon {
+	position: relative;
+	width: 30px;
+	height: 5px;
+	background-color: #fff;
+}
+
+.menu-icon::before {
+	position: absolute;
+	left: 0;
+	top: -10px;
+	content: '';
+	width: 30px;
+	height: 5px;
+	background-color: #fff;
+	transition: transform 0.2s ease-in, top 0.2s linear 0.2s;
+}
+
+.menu-icon::after {
+	position: absolute;
+	left: 0;
+	top: 10px;
+	content: '';
+	width: 30px;
+	height: 5px;
+	background-color: #fff;
+	transition: transform 0.2s ease-in, top 0.2s linear 0.2s;
+}
+
+.menu-icon.menu-icon-active {
+	background-color: transparent;
+}
+
+.menu-icon.menu-icon-active::before {
+	transform: rotate(45deg);
+	top: 0;
+	transition: top 0.2s linear, transform 0.2s ease-in 0.2s;
+}
+
+.menu-icon.menu-icon-active::after {
+	transform: rotate(-45deg);
+	top: 0;
+	transition: top 0.2s linear, transform 0.2s ease-in 0.2s;
+}
